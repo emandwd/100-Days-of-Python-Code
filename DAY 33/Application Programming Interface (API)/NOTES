@@ -1,0 +1,52 @@
+Key Takeaways : ( video 2 )
+1. Application Programming Interfaces (APIs) are sets of commands, functions, protocols, and
+objects that allow programmers to interact with external systems.
+
+2. APIs act as an interface or barrier between your program and external data sources, enforcing specific
+rules for data requests.
+
+3. Websites like Yahoo Weather, Coinbase, and the NBA provide APIs to access their data programmatically, but only
+within the constraints defined by their API documentation.
+
+4. APIs are analogous to restaurant menus, specifying what you can request from the system, rather than allowing unrestricted
+access to all underlying data.
+
+5. If you have structured your request according to all of the requirements that the external system
+has set out in their API, then they will respond to you appropriately and give you the data that you want. But if you do not follow
+the rules, then your request will be invalid and they will tell you to go away.
+
+Key Takeaways : ( video 3 )
+"http://open-notify.org/Open-Notify-API/ISS-Location-Now/" --> returns the api as form of JSON
+" https://chromewebstore.google.com/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc " --> helps to read JSON much easier on chrom
+
+1. An API endpoint is the URL location where data from an external service can be accessed.
+
+2. API requests function like interactions with a bank teller, controlling access and authentication.
+
+3. JSON is a minimalist data format used for transferring data efficiently across the internet.
+
+4. The Python requests library enables making API calls to retrieve data programmatically.
+
+Key Takeaways : ( video 4 )
+1. Instead of using if-else statements for each HTTP status code, as shown in this reference, we can use response.raise_for_status(). The raise_for_status() method is part of the Requests library.  --> https://docs.python-requests.org/en/latest/
+2. .json() is a method that reads the response body and tries to convert (deserialize) it from JSON format into a Python object( Python dictionary ) --> response.json()
+3. What is tuple ? A tuple in Python is just a collection of values grouped together, written in parenthesis: point = (longitude, latitude) --> here is tuple that contains two items
+or print(longitude, latitude) --> python does not create a tuple here. It just sends both values to print() as separate arguments, and print() displays them with aspace between them by default.
+Example :
+longitude = "45.0"
+latitude = " 90.0"
+print(longitude, latitude)
+--> Output: 45.0 90.0
+
+However, if you want the, as tuple, you'd write:
+print((longitude, latitude))
+--> Output: ('45.0', '90.0')
+
+NOTE : Tuples are ordered(items keep their order) and can't be changed after creation. Additionally, you can store different types of data inside them.
+
+4. Relationship between tuple, dictionary, and json() :
+. JSON is just a text formate sent ny APIs
+. .json() turns that JSON text into Python objects - usually dictionaries and lists
+. a dictionary stores data as key-value pairs
+. a tuple is completely different - it's just an ordered containers for values, no keys.
+

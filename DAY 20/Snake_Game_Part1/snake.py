@@ -1,0 +1,44 @@
+from turtle import Turtle, Screen
+starting_pos = [(0, 0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
+class Snake:
+    def __init__(self):
+        self.segments = [] # segments = [head, seg1, seg2]
+        self.create_snake()
+        self.head = self.segments[0]
+
+    def create_snake(self):
+        for position in starting_pos:
+            new_segment = Turtle(shape="square")
+            new_segment.color("white")
+            new_segment.penup()  # Prevent drawing lines
+            new_segment.goto(position)  # segment.goto(starting_pos) is wrong because you are passing the entire list, instead of the individual position in the loop.
+            self.segments.append(new_segment)  # <-- Use self.segments here
+
+    def move(self):
+        for seg_num in range(len(self.segments) - 1, 0,-1):  # This loops backward through the list of segments (excluding the head at index 0). stop = 0 → but doesn't include 0 (it stops at 1) -> this loop will go through: seg_num = 2 → 1
+            new_x = self.segments[seg_num - 1].xcor()  # So, segment 2 goes to where segment 1 was. Then segment 1 goes to where segment 0 was.
+            new_y = self.segments[seg_num - 1].ycor()
+            self.segments[seg_num].goto(new_x, new_y)
+        self.segments[0].forward(MOVE_DISTANCE)  # the head of the snake forward by 20 steps.
+
+    def up(self):
+        if self.head.heading()!=DOWN:
+            self.segments[0].setheading(UP)
+    def down(self):
+        if self.head.heading() != UP:
+            self.segments[0].setheading(DOWN)
+    def left(self):
+        if self.head.heading() != RIGHT:
+            self.segments[0].setheading(LEFT)
+
+    def right(self):
+        if self.head.heading() != LEFT:
+            self.segments[0].setheading(RIGHT)
+
+''' In the code, it looks like the body moves first and then the head moves.
+But in reality (on screen), it all happens so fast that it looks like the whole snake is moving together smoothly — like a connected train. '''
